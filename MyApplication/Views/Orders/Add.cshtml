@@ -1,0 +1,81 @@
+﻿@using Bikes.ViewModels.Orders
+@model AddVM
+@{
+}
+
+<h2> Add Order</h2>
+
+<form action="/Orders/Add" method="post">
+    <div class="container">
+        <div class="form-group row mb-2">
+            <label for="Details" class="col-2 col-form-label">@Html.LabelFor(m => m.Details)</label>
+            <div class="col-4">
+                @Html.TextBoxFor(m => m.Details, new { @class = "form-control" })
+            </div>
+            <div class="col-4">
+                @Html.ValidationMessageFor(m => m.Details, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="Problems" class="col-2 col-form-label">@Html.LabelFor(m => m.Problems)</label>
+            <div class="col-4">
+                @Html.TextBoxFor(m => m.Problems, new { @class = "form-control" })
+            </div>
+            <div class="col-4">
+                @Html.ValidationMessageFor(m => m.Problems, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="Total" class="col-2 col-form-label">@Html.LabelFor(m => m.Total)</label>
+            <div class="col-4">
+                @Html.TextBoxFor(m => m.Total, new { @class = "form-control" })
+            </div>
+            <div class="col-4">
+                @Html.ValidationMessageFor(m => m.Total, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="IsExpress" class="col-2 col-form-label">@Html.LabelFor(m => m.IsExpress)</label>
+            <div class="col-4">
+                @Html.CheckBoxFor(m => m.IsExpress, new { @class = "form-check-input" })
+            </div>
+            <div class="col-4">
+                @Html.ValidationMessageFor(m => m.IsExpress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="Customer_ID" class="col-2 col-form-label">@Html.LabelFor(m => m.Customer_ID)</label>
+            <div class="col-4">
+                <select id="Customer_ID" name="Customer_ID" class="form-control">
+                    @foreach (var customer in Model.Customers)
+                    {
+                        <option value="@customer.Id">@customer.FirstName @customer.LastName</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="Employee_ID" class="col-2 col-form-label">@Html.LabelFor(m => m.Employee_ID)</label>
+            <div class="col-4">
+                <select id="Employee_ID" name="Employee_ID" class="form-control">
+                    @foreach (var employee in Model.Employees)
+                    {
+                        <option value="@employee.Id">@employee.FirstName @employee.LastName</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-4 offset-2">
+                @Html.ValidationMessage("summaryError", "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-2"></div>
+            <div class="col-4">
+                <input type="submit" class="btn btn-primary" value="Save" />
+                <a href="/Orders/Index" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+    </div>
+</form>

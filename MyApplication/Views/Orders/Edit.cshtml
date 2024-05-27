@@ -1,0 +1,82 @@
+﻿@using Bikes.ViewModels.Orders
+@model EditVM
+@{
+}
+
+<h2>Edit Order</h2>
+
+<form action="/Orders/Edit" method="post">
+    <div>
+        <div class="grid">
+            @Html.HiddenFor(m => m.Order.Id)
+            @Html.HiddenFor(m => m.Order.PlacedOn)
+            <div class="row mb-2">
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.Order.Details)
+                </div>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(m => m.Order.Details, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Order.Details, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.Order.Problems)
+                </div>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(m => m.Order.Problems, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Order.Problems, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.Order.Total)
+                </div>
+                <div class="col-md-4">
+                    @Html.TextBoxFor(m => m.Order.Total, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Order.Total, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.Order.IsExpress)
+                </div>
+                <div class="col-md-4">
+                    <div class="form-check">
+                        @Html.CheckBoxFor(m => m.Order.IsExpress, new { @class = "form-check-input" })
+                        <label class="form-check-label" for="IsExpress">Express Delivery</label>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Order.IsExpress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.Order.Customer_ID)
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(n => n.Order.Customer_ID, new SelectList(Model.Customers, "Id", "FirstName", Model.Order.Customer_ID), new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-2">
+                    @Html.LabelFor(m => m.Order.Employee_ID)
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownListFor(n => n.Order.Employee_ID, new SelectList(Model.Employees, "Id", "FirstName", Model.Order.Employee_ID), new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-3 offset-md-2">
+                    @Html.ValidationMessage("summaryError", "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <input type="submit" class="btn btn-primary" value="Save" />
+                    <a href="/Orders/Index" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

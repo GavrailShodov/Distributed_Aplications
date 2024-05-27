@@ -1,0 +1,70 @@
+﻿@model Bikes.ViewModels.Employees.EditVM
+@{
+}
+
+<h2>Edit Employee</h2>
+
+<form id="editEmployeeForm" action="/Employees/Edit" method="post">
+    <div>
+        <div class="row mb-2">
+            <div class="col-md-1">
+                @Html.LabelFor(m => m.Employee.FirstName)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.Employee.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employee.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-1">
+                @Html.LabelFor(m => m.Employee.LastName)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.Employee.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employee.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-1">
+                @Html.LabelFor(m => m.Employee.EmailAddress)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.Employee.EmailAddress, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employee.EmailAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-1">
+                @Html.LabelFor(m => m.Employee.Salary)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.Employee.Salary, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Employee.Salary, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-1">
+                @Html.LabelFor(m => m.Employee.IsFullTime)
+            </div>
+            <div class="col-md-4">
+                <div class="form-check">
+                    @Html.CheckBoxFor(m => m.Employee.IsFullTime, new { @class = "form-check-input" })
+                    <label class="form-check-label" for="IsFullTime">Full-Time</label>
+                </div>
+                @Html.ValidationMessageFor(m => m.Employee.IsFullTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-3 offset-md-1">
+                @Html.ValidationMessage("summaryError", "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <input type="submit" class="btn btn-primary" value="Save" />
+                <a href="/Employees/Index" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+    </div>
+</form>

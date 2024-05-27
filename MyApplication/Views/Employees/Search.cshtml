@@ -1,0 +1,95 @@
+﻿@model Bikes.ViewModels.Employees.SearchVM
+@{
+}
+
+<h4>Search</h4>
+
+<div class="search-container pb-4">
+    <form id="searchForm" action="/Employees/Search" method="post" class="form-inline">
+        <input type="text" id="firstName" class="form-control mr-2" placeholder="Search.." name="firstName">
+        <button type="submit" class="btn btn-primary mr-2">Search</button>
+        <a href="/Employees/Index" class="btn btn-secondary">Reset</a>
+    </form>
+</div>
+
+
+<h4>Employees</h4>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    First name
+                </th>
+                <th>
+                    Last name
+                </th>
+                <th>
+                    E-mail
+                </th>
+                <th>
+                    Salary
+                </th>
+                <th>
+                    Full-Time
+                </th>
+                <th>
+                    Total orders
+                </th>
+                <th>
+                    Date Of Registration
+                </th>
+                <th colspan="2">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Employees)
+            {
+                <tr>
+                    <td>
+                        @item.FirstName
+                    </td>
+                    <td>
+                        @item.LastName
+                    </td>
+                    <td>
+                        @item.EmailAddress
+                    </td>
+                    <td>
+                        @item.Salary
+                    </td>
+                    <td>
+                        @if (item.IsFullTime)
+                        {
+                            <span class="badge badge-success">Yes</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-secondary">No</span>
+                        }
+                    </td>
+                    <td>
+                        @item.TotalOrders
+                    </td>
+                    <td>
+                        @item.RegisteredOn
+                    </td>
+                    <td>
+                        <a href="/Employees/Edit?id=@item.Id" class="btn btn-sm btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <a href="/Employees/Delete?id=@item.Id" class="btn btn-sm btn-danger" onclick="return confirm('Delete Baker?');">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+    <a href="/Employees/Add" class="btn btn-success">Add +</a>
+</div>
+

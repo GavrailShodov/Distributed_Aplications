@@ -1,0 +1,67 @@
+﻿@model Bikes.ViewModels.Customers.AddVM
+@{
+}
+
+<h2>Add Customer</h2>
+
+<form id="addCustomerForm" action="/Customers/Add" method="post">
+    <div class="container">
+        <div class="form-group row mb-2">
+            <label for="FirstName" class="col-1 col-form-label">@Html.LabelFor(m => m.FirstName)</label>
+            <div class="col-4">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            </div>
+            <div class="col-4">
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="LastName" class="col-1 col-form-label">@Html.LabelFor(m => m.LastName)</label>
+            <div class="col-4">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
+            <div class="col-4">
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="Address" class="col-1 col-form-label">@Html.LabelFor(m => m.Address)</label>
+            <div class="col-4">
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            </div>
+            <div class="col-4">
+                @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="AccountBalance" class="col-1 col-form-label">@Html.LabelFor(m => m.AccountBalance)</label>
+            <div class="col-4">
+                @Html.TextBoxFor(m => m.AccountBalance, new { @class = "form-control" })
+            </div>
+            <div class="col-4">
+                @Html.ValidationMessageFor(m => m.AccountBalance, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <label for="DeluxeAccount" class="col-1 col-form-label">@Html.LabelFor(m => m.DeluxeAccount)</label>
+            <div class="col-4">
+                @Html.CheckBoxFor(m => m.DeluxeAccount, new { @class = "form-check-input" })
+            </div>
+            <div class="col-4">
+                @Html.ValidationMessageFor(m => m.DeluxeAccount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-4 offset-1">
+                @Html.ValidationMessage("summaryError", "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group row mb-2">
+            <div class="col-1"></div>
+            <div class="col-4">
+                <input type="submit" class="btn btn-primary" value="Save" />
+                <a href="/Customers/Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>
